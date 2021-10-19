@@ -78,6 +78,10 @@ gameBoard = (function(){
       return true;
     }
   }
+
+  function getBoard(){
+    return boardArr;
+  }
   
-  return { addMark, getMark, hasWinner, hasTie };
+  return { addMark, getMark, hasWinner, hasTie, getBoard };
 })();
