@@ -81,29 +81,3 @@ gameBoard = (function(){
   
   return { addMark, getMark, hasWinner, hasTie };
 })();
-
-
-
-game = (function(){
-  var buttons = document.querySelectorAll("button");
-  var activeMark = 'x';
-  var board = gameBoard;
-
-  //add event listeners
-  for(let i=0; i<buttons.length; i++){
-    buttons[i].addEventListener('click', function(){
-      _handleMark(i);
-    });
-  }
-
-  function _handleMark(coordinate){
-    board.addMark(activeMark, buttons[coordinate].getAttribute("id"));
-    _render();
-  }
-
-  function _render(){
-    for(let i=0; i<buttons.length; i++){
-      buttons[i].innerText = board.getMark(i);
-    }
-  }
-})(gameBoard);
