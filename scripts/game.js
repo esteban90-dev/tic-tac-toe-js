@@ -7,6 +7,14 @@ game = (function(gameBoard, players, display){
 
   function turn(coordinate){
     board.addMark(activePlayer.getMark(),coordinate);
+
+    //switch active player
+    if (activePlayer == player1){
+      activePlayer = player2;
+    } else {
+      activePlayer = player1;
+    }
+
     display.renderBoard(board.getBoard());
   }
 
