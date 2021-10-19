@@ -9,5 +9,8 @@ fromDisplay = (function(game){
 
   function _handleClick(event){
     game.turn(event.target.getAttribute("id"));
+    
+    //disable the button once clicked
+    event.target.removeEventListener('click', _handleClick);
   }
 })(game);

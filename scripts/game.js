@@ -6,6 +6,7 @@ game = (function(gameBoard, players, display){
   var display = display;
 
   function turn(coordinate){
+    //add mark to the board object
     board.addMark(activePlayer.getMark(),coordinate);
 
     //switch active player
@@ -15,6 +16,7 @@ game = (function(gameBoard, players, display){
       activePlayer = player1;
     }
 
+    //update the board display
     display.renderBoard(board.getBoard());
   }
 
