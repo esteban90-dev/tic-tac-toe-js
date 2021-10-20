@@ -10,8 +10,10 @@ game = (function(gameBoard, displayUpdater){
 
     if(board.hasWinner()){
       displayUpdater.displayWinner(activePlayer.getName());
+      _endGame();
     } else if(board.hasTie()){
       displayUpdater.displayTie();
+      _endGame();
     } else {
       //switch active player
       if (activePlayer === players[0]){
@@ -28,6 +30,7 @@ game = (function(gameBoard, displayUpdater){
 
   function init(player1, player2){
     players = [player1,player2];
+    board.clear();
     
     //player with 'x' mark goes first
     if (players[0].getMark() === 'x'){
@@ -39,6 +42,11 @@ game = (function(gameBoard, displayUpdater){
     displayUpdater.enableBoardButtons();
     displayUpdater.disablePlayButton();
     displayUpdater.displayPlayerTurn(activePlayer.getName());
+  }
+
+  function _endGame(){
+    displayUpdater.displayResetButton();
+    displayUpdater.disableBoardButtons();
   }
 
   return { turn, init }

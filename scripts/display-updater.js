@@ -1,11 +1,18 @@
 var displayUpdater = (function(){
   var boardButtons = document.querySelectorAll("button");
   var playButton = document.querySelector("#play");
+  var resetButton = document.querySelector("#reset");
   var message = document.querySelector("#message");
   
   function renderBoard(boardArr){
     for(let i=0; i<boardButtons.length; i++){
       boardButtons[i].innerText = boardArr[i];
+    }
+  }
+
+  function disableBoardButtons(){
+    for(let i=0; i<boardButtons.length; i++){
+      boardButtons[i].setAttribute("disabled", "");
     }
   }
 
@@ -17,6 +24,14 @@ var displayUpdater = (function(){
 
   function disablePlayButton(){
     playButton.setAttribute("disabled","");
+  }
+
+  function enablePlayButton(){
+    playButton.removeAttribute("disabled");
+  }
+
+  function displayResetButton(){
+    resetButton.classList.remove("display-none");
   }
 
   function displayPlayerTurn(name){
@@ -31,5 +46,5 @@ var displayUpdater = (function(){
     message.innerHTML = "The game is a tie!";
   }
 
-  return { renderBoard, enableBoardButtons, disablePlayButton, displayPlayerTurn, displayWinner, displayTie }
+  return { renderBoard, disableBoardButtons, enableBoardButtons, disablePlayButton, displayResetButton, displayPlayerTurn, displayWinner, displayTie }
 })();

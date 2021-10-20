@@ -82,6 +82,10 @@ gameBoard = (function(){
   function getBoard(){
     return boardArr;
   }
+
+  function clear(){
+    boardArr = ["","","","","","","","",""];
+  }
   
-  return { addMark, getMark, hasWinner, hasTie, getBoard };
+  return { addMark, getMark, hasWinner, hasTie, getBoard, clear };
 })();

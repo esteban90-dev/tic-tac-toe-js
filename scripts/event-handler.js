@@ -1,6 +1,7 @@
 var eventHandler = (function(game,playerFactory){
   var boardButtons = document.querySelectorAll("button");
   var form = document.querySelector("form");
+  var playButton = document.querySelector("#play");
   var game = game;
   var playerFactory = playerFactory;
   var player1xButton = document.querySelector("#player-1-mark-x");
@@ -8,16 +9,26 @@ var eventHandler = (function(game,playerFactory){
   var player2xButton = document.querySelector("#player-2-mark-x");
   var player2oButton = document.querySelector("#player-2-mark-o");
   var radioButtons = [player1xButton, player1oButton, player2xButton, player2oButton];
+  var resetButton = document.querySelector("#reset");
+  var message = document.querySelector("#message");
 
   //add event listeners
-  for(let i=0; i<boardButtons.length; i++){
-    boardButtons[i].addEventListener('click', _handleBoardClick);
+  
+  _addBoardButtonListeners();
+  _addRadioButtonListeners();
+  form.addEventListener("submit",_handleSubmit);
+  resetButton.addEventListener('click',_handleReset);
+
+  function _addBoardButtonListeners(){
+    for(let i=0; i<boardButtons.length; i++){
+      boardButtons[i].addEventListener('click', _handleBoardClick);
+    }
   }
 
-  form.addEventListener("submit",_handleSubmit);
-
-  for(let i=0; i<radioButtons.length; i++){
-    radioButtons[i].addEventListener('click',_handleRadioClick);
+  function _addRadioButtonListeners(){
+    for(let i=0; i<radioButtons.length; i++){
+      radioButtons[i].addEventListener('click',_handleRadioClick);
+    }
   }
 
   function _handleBoardClick(event){
@@ -66,6 +77,25 @@ var eventHandler = (function(game,playerFactory){
       player1oButton.checked = false;
       player1xButton.checked = true;
     }
+  }
+
+  function _handleReset(event){
+    //clear the board buttons
+    for(let i=0; i<boardButtons.length; i++){
+      boardButtons[i].innerHTML = "";
+    }
+
+    //add listeners back to board buttons
+    _addBoardButtonListeners();
+
+    //clear the message element
+    message.innerHTML = "";
+
+    //enable the play button
+    playButton.removeAttribute("disabled");
+
+    //hide the reset button
+    resetButton.classList.add("display-none");
   }
 
 })(game,Player);
