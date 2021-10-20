@@ -1,26 +1,33 @@
-game = (function(gameBoard, players, display){
+game = (function(gameBoard, display){
   var board = gameBoard;
-  var player1 = players[0];
-  var player2 = players[1];
-  var activePlayer = player1;
+  var players;
+  var activePlayer;
   var display = display;
 
   function turn(coordinate){
     //add mark to the board object
+    console.log(activePlayer);
     board.addMark(activePlayer.getMark(),coordinate);
 
     //switch active player
-    if (activePlayer == player1){
-      activePlayer = player2;
+    if (activePlayer === players[0]){
+      activePlayer = players[1];
     } else {
-      activePlayer = player1;
+      activePlayer = players[0];
     }
 
     //update the board display
     display.renderBoard(board.getBoard());
   }
 
-  return { turn }
+  function init(player1, player2){
+    players = [player1,player2];
+    activePlayer = players[0];
+    display.enableBoardButtons();
+    display.disablePlayButton();
+  }
 
-})(gameBoard, [Player('thomas','x'), Player('stephen','o')], toDisplay);
+  return { turn, init }
+
+})(gameBoard, toDisplay);
 
