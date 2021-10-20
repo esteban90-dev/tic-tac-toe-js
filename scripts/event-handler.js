@@ -1,4 +1,4 @@
-fromDisplay = (function(game,playerFactory){
+var eventHandler = (function(game,playerFactory){
   var boardButtons = document.querySelectorAll("button");
   var form = document.querySelector("form");
   var game = game;

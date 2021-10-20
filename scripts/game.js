@@ -1,12 +1,11 @@
-game = (function(gameBoard, display){
+game = (function(gameBoard, displayUpdater){
   var board = gameBoard;
   var players;
   var activePlayer;
-  var display = display;
+  var displayUpdater = displayUpdater;
 
   function turn(coordinate){
     //add mark to the board object
-    console.log(activePlayer);
     board.addMark(activePlayer.getMark(),coordinate);
 
     //switch active player
@@ -17,17 +16,17 @@ game = (function(gameBoard, display){
     }
 
     //update the board display
-    display.renderBoard(board.getBoard());
+    displayUpdater.renderBoard(board.getBoard());
   }
 
   function init(player1, player2){
     players = [player1,player2];
     activePlayer = players[0];
-    display.enableBoardButtons();
-    display.disablePlayButton();
+    displayUpdater.enableBoardButtons();
+    displayUpdater.disablePlayButton();
   }
 
   return { turn, init }
 
-})(gameBoard, toDisplay);
+})(gameBoard, displayUpdater);
 

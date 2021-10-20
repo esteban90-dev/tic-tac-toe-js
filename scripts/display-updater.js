@@ -1,4 +1,4 @@
-toDisplay = (function(){
+var displayUpdater = (function(){
   var boardButtons = document.querySelectorAll("button");
   var playButton = document.querySelector("#play");
   
