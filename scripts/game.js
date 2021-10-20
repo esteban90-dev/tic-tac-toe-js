@@ -8,16 +8,22 @@ game = (function(gameBoard, displayUpdater){
     //add mark to the board object
     board.addMark(activePlayer.getMark(),coordinate);
 
-    //switch active player
-    if (activePlayer === players[0]){
-      activePlayer = players[1];
+    if(board.hasWinner()){
+      displayUpdater.displayWinner(activePlayer.getName());
+    } else if(board.hasTie()){
+      displayUpdater.displayTie();
     } else {
-      activePlayer = players[0];
+      //switch active player
+      if (activePlayer === players[0]){
+        activePlayer = players[1];
+      } else {
+        activePlayer = players[0];
+      }
+
+      displayUpdater.displayPlayerTurn(activePlayer.getName());
     }
 
-    //update display
     displayUpdater.renderBoard(board.getBoard());
-    displayUpdater.displayPlayerTurn(activePlayer.getName());
   }
 
   function init(player1, player2){

@@ -23,5 +23,13 @@ var displayUpdater = (function(){
     message.innerHTML = "It's " + name + "'s turn";
   }
 
-  return { renderBoard, enableBoardButtons, disablePlayButton, displayPlayerTurn }
+  function displayWinner(name){
+    message.innerHTML = name + " won the game!";
+  }
+
+  function displayTie(){
+    message.innerHTML = "The game is a tie!";
+  }
+
+  return { renderBoard, enableBoardButtons, disablePlayButton, displayPlayerTurn, displayWinner, displayTie }
 })();
