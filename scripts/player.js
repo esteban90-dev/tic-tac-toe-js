@@ -6,5 +6,9 @@ function Player(name, mark){
     return mark;
   }
 
-  return { getMark }
+  function getName(){
+    return name;
+  }
+
+  return { getMark, getName }
 }

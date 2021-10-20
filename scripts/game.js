@@ -15,15 +15,24 @@ game = (function(gameBoard, displayUpdater){
       activePlayer = players[0];
     }
 
-    //update the board display
+    //update display
     displayUpdater.renderBoard(board.getBoard());
+    displayUpdater.displayPlayerTurn(activePlayer.getName());
   }
 
   function init(player1, player2){
     players = [player1,player2];
-    activePlayer = players[0];
+    
+    //player with 'x' mark goes first
+    if (players[0].getMark() === 'x'){
+      activePlayer = players[0];
+    } else {
+      activePlayer = players[1];
+    }
+
     displayUpdater.enableBoardButtons();
     displayUpdater.disablePlayButton();
+    displayUpdater.displayPlayerTurn(activePlayer.getName());
   }
 
   return { turn, init }
