@@ -17,17 +17,37 @@
       <div class="row justify-center">
         <div class="col-4">
           <form action="" method="">
-            <div class="row">
-              <div class="col-12 display-flex justify-center">
-                <label for="player-1-name">Player 1 Name:</label>
-                <input type="text" id="player-1-name" name="player-1" required>
+            <div class="row justify-around">
+              <div class="col-6">
+                <p class="text-center">Player 1</p><br>
+                <div>
+                  <label for="player-1-name">Name:</label>
+                  <input type="text" id="player-1-name" name="player-1-name" required>
+                </div>
+                <div class="display-flex">
+                  <p>Mark:</p>
+                  <input type="radio" id="player-1-mark-x" name="player-1-mark" value="x" class="ml-3" checked>
+                  <label for="player-1-mark-x">x</label>
+                  
+                  <input type="radio" id="player-1-mark-o" name="player-1-mark" value="o" class="ml-3">
+                  <label for="player-1-mark-o">o</label>
+                </div>
               </div>
-            </div>
-              
-            <div class="row">
-              <div class="col-12 display-flex justify-center">
-                <label for="player-2-name">Player 2 Name:</label>
-                <input type="text" id="player-2-name" name="player-2" required>
+
+              <div class="col-6">
+                <p class="text-center">Player 2</p><br>
+                <div>
+                  <label for="player-2-name">Name:</label>
+                  <input type="text" id="player-2-name" name="player-2-name" required>
+                </div>
+                <div class="display-flex">
+                  <p>Mark:</p>
+                  <input type="radio" id="player-2-mark-x" name="player-2-mark" value="x" class="ml-3">
+                  <label for="player-2-mark-x">x</label>
+                  
+                  <input type="radio" id="player-2-mark-o" name="player-2-mark" value="o" class="ml-3" checked>
+                  <label for="player-2-mark-o">o</label>
+                </div>
               </div>
             </div>
               
