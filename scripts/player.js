@@ -11,4 +11,4 @@ function Player(name, mark){
   }
 
   return { getMark, getName }
-}
+} 

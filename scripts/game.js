@@ -1,4 +1,4 @@
-game = (function(gameBoard, players, displayUpdater){
+const game = (function(gameBoard, players, displayUpdater){
   var board = gameBoard;
   var players = players;
   var activePlayer;

@@ -1,4 +1,4 @@
-gameBoard = (function(){
+const gameBoard = (function(){
   var boardArr = ["","","","","","","","",""];
   
   function addMark(mark, coordinate){

@@ -1,16 +1,16 @@
-var eventHandler = (function(game,playerFactory){
-  var boardButtons = document.querySelectorAll("button");
-  var form = document.querySelector("form");
-  var playButton = document.querySelector("#play");
+const eventHandler = (function(game,playerFactory){
+  const boardButtons = document.querySelectorAll("button");
+  const form = document.querySelector("form");
+  const playButton = document.querySelector("#play");
+  const player1xButton = document.querySelector("#player-1-mark-x");
+  const player1oButton = document.querySelector("#player-1-mark-o");
+  const player2xButton = document.querySelector("#player-2-mark-x");
+  const player2oButton = document.querySelector("#player-2-mark-o");
+  const radioButtons = [player1xButton, player1oButton, player2xButton, player2oButton];
+  const resetButton = document.querySelector("#reset");
+  const message = document.querySelector("#message");
   var game = game;
   var playerFactory = playerFactory;
-  var player1xButton = document.querySelector("#player-1-mark-x");
-  var player1oButton = document.querySelector("#player-1-mark-o");
-  var player2xButton = document.querySelector("#player-2-mark-x");
-  var player2oButton = document.querySelector("#player-2-mark-o");
-  var radioButtons = [player1xButton, player1oButton, player2xButton, player2oButton];
-  var resetButton = document.querySelector("#reset");
-  var message = document.querySelector("#message");
 
   //add event listeners
   
