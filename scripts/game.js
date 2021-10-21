@@ -1,6 +1,6 @@
-game = (function(gameBoard, displayUpdater){
+game = (function(gameBoard, players, displayUpdater){
   var board = gameBoard;
-  var players;
+  var players = players;
   var activePlayer;
   var displayUpdater = displayUpdater;
 
@@ -8,6 +8,7 @@ game = (function(gameBoard, displayUpdater){
     //add mark to the board object
     board.addMark(activePlayer.getMark(),coordinate);
 
+    //determine if game over
     if(board.hasWinner()){
       displayUpdater.displayWinner(activePlayer.getName());
       _endGame();
@@ -25,12 +26,13 @@ game = (function(gameBoard, displayUpdater){
       displayUpdater.displayPlayerTurn(activePlayer.getName());
     }
 
+    //update board display
     displayUpdater.renderBoard(board.getBoard());
   }
 
   function init(player1, player2){
-    players = [player1,player2];
     board.clear();
+    players = [player1,player2];
     
     //player with 'x' mark goes first
     if (players[0].getMark() === 'x'){
@@ -51,5 +53,5 @@ game = (function(gameBoard, displayUpdater){
 
   return { turn, init }
 
-})(gameBoard, displayUpdater);
+})(gameBoard, [], displayUpdater);
 
