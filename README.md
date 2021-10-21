@@ -10,3 +10,4 @@ The javascript was organized using the Module and Factory patterns.
 - The player objects store player names and marks.
 - The DisplayUpdater object is used by the Game object to update the display. 
 
+See it live [here.](https://esteban90-dev.github.io/tic-tac-toe-js/)
