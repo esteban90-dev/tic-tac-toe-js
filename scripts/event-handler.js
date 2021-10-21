@@ -1,4 +1,4 @@
-const eventHandler = (function(game,playerFactory){
+const eventHandler = (function(Game,playerFactory){
   const boardButtons = document.querySelectorAll("button");
   const form = document.querySelector("form");
   const playButton = document.querySelector("#play");
@@ -9,7 +9,7 @@ const eventHandler = (function(game,playerFactory){
   const radioButtons = [player1xButton, player1oButton, player2xButton, player2oButton];
   const resetButton = document.querySelector("#reset");
   const message = document.querySelector("#message");
-  var game = game;
+  var Game = Game;
   var playerFactory = playerFactory;
 
   //add event listeners
@@ -32,7 +32,7 @@ const eventHandler = (function(game,playerFactory){
   }
 
   function _handleBoardClick(event){
-    game.turn(event.target.getAttribute("id"));
+    Game.turn(event.target.getAttribute("id"));
 
     //disable the button once clicked
     event.target.removeEventListener('click', _handleBoardClick);
@@ -44,7 +44,7 @@ const eventHandler = (function(game,playerFactory){
     var player1Mark = formData.get("player-1-mark");
     var player2Name = formData.get("player-2-name");
     var player2Mark = formData.get("player-2-mark");
-    game.init(playerFactory(player1Name,player1Mark), playerFactory(player2Name,player2Mark));
+    Game.init(playerFactory(player1Name,player1Mark), playerFactory(player2Name,player2Mark));
 
     event.preventDefault();
   }
@@ -98,4 +98,4 @@ const eventHandler = (function(game,playerFactory){
     resetButton.classList.add("display-none");
   }
 
-})(game,Player);
+})(Game,Player);

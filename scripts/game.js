@@ -1,8 +1,8 @@
-const game = (function(gameBoard, players, displayUpdater){
-  var board = gameBoard;
+const Game = (function(GameBoard, players, DisplayUpdater){
+  var board = GameBoard;
   var players = players;
   var activePlayer;
-  var displayUpdater = displayUpdater;
+  var DisplayUpdater = DisplayUpdater;
 
   function turn(coordinate){
     //add mark to the board object
@@ -10,10 +10,10 @@ const game = (function(gameBoard, players, displayUpdater){
 
     //determine if game over
     if(board.hasWinner()){
-      displayUpdater.displayWinner(activePlayer.getName());
+      DisplayUpdater.displayWinner(activePlayer.getName());
       _endGame();
     } else if(board.hasTie()){
-      displayUpdater.displayTie();
+      DisplayUpdater.displayTie();
       _endGame();
     } else {
       //switch active player
@@ -23,11 +23,11 @@ const game = (function(gameBoard, players, displayUpdater){
         activePlayer = players[0];
       }
 
-      displayUpdater.displayPlayerTurn(activePlayer.getName());
+      DisplayUpdater.displayPlayerTurn(activePlayer.getName());
     }
 
     //update board display
-    displayUpdater.renderBoard(board.getBoard());
+    DisplayUpdater.renderBoard(board.getBoard());
   }
 
   function init(player1, player2){
@@ -41,17 +41,17 @@ const game = (function(gameBoard, players, displayUpdater){
       activePlayer = players[1];
     }
 
-    displayUpdater.enableBoardButtons();
-    displayUpdater.disablePlayButton();
-    displayUpdater.displayPlayerTurn(activePlayer.getName());
+    DisplayUpdater.enableBoardButtons();
+    DisplayUpdater.disablePlayButton();
+    DisplayUpdater.displayPlayerTurn(activePlayer.getName());
   }
 
   function _endGame(){
-    displayUpdater.displayResetButton();
-    displayUpdater.disableBoardButtons();
+    DisplayUpdater.displayResetButton();
+    DisplayUpdater.disableBoardButtons();
   }
 
   return { turn, init }
 
-})(gameBoard, [], displayUpdater);
+})(GameBoard, [], DisplayUpdater);
 

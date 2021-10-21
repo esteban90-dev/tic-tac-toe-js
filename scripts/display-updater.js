@@ -1,4 +1,4 @@
-const displayUpdater = (function(){
+const DisplayUpdater = (function(){
   const boardButtons = document.querySelectorAll("button");
   const playButton = document.querySelector("#play");
   const resetButton = document.querySelector("#reset");
